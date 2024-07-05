@@ -35,8 +35,7 @@ func main() {
 	}()
 
 	sigChan := make(chan os.Signal)
-	signal.Notify(sigChan, os.Interrupt)
-	signal.Notify(sigChan, os.Kill)
+	signal.Notify(sigChan, os.Interrupt, os.Kill)
 
 	sig := <-sigChan
 	l.Println("Received terminate, graceful shutdown", sig)
